@@ -2,16 +2,16 @@ dist: xenial
 sudo: required
 env:
   global:
-    - DOCKER_REPO=patbos/homekit-mdns-responder
-    - DOCKER_USER=patbos
-    - secure: AScreaTSJ6XuA8P3Omay/aFvp6lRRF4pCVgYMxJktbngEqltET8yZGBZ+Dj1E2jkrrVHXS3dZ+/fLOpnlNM9CCJ63MOfyufdlnJ/wO+b+c9iDi6OXpaN6eAgdOS41726xd2nN7cn1RNl13orFTAn4QdiSu5T9XZbK4e9IDNrLYvHA1NPW6qjgwUsFNntU2BCccYJGHwdUv+DgFSt3fhqOTkxDRwoA9RLQausxk8HXqDqDRHwA4KhbIZ2rsDypG8YBNTSgCkUQKGBgdqHxWp/H59IJhiT9xNJDODg93b92nqDcEA+y5DFQHuVbE4cV441SC6Epi/AF+129dS9YL4DgJOfQuHmMm5UMh4Met5GnDg6+JivzL5YaCIGN5jshvCF47fK5ufJdXKu2goP9J3Qt7mUAX8oJE6Odq25Mmio9XfTLt3BqeWfsW5So3kwmGcM+GoyL8o4PcI8gHBtT2mD/7OhcW/JgRvJMnhTREu5uZh/Gn7j84jlFIYEoItfpvzS9VjhuUCAFAYo1JyvkLn5bc2deHqNVyDNo8DhdEtq0M50oBRGY+EXXZng2a+ho4mBvieJ3/cXEiOdc1PikWNgFvG3xDt/0QLtM+aYXC8YgdXOnqAGiLvktXXct7x8kMa0LNnAVUv1HPCYjpuq7dMKSwnEYozUJ1hocbHbHU4MQZQ=
+  - DOCKER_REPO=patbos/homekit-mdns-responder
+  - DOCKER_USER=patbos
+  - secure: ARGPE+25WfDmTsnc6z3ZeTVRhPw2sShh5ce5xFPMQny21K3h5vwYbzTvvxH/aVsa3oapzD6Qy96RG548j0pbccPokOX1ztV52eTV76OC1e8Wy60qEMJK8ge3AdKFV+tKzD3nUSSG0PICwJff9/1JSNqnmWZBRFp/nT3yU8DXuwLedFlCNGmdLzssTB1ZH829UToxngzqQQeReTOBUgpSJI7ZOebSmTn9uauAs1vCLfV6tROc1zF6JgicomOw8xs74YrS4KvFsnKPY5Qr0OGoXiuyuk91VJtiMjkzt93OQk98/zXOH7jTFZhSktWwFV3I9LQWzIIb9PD8oYpiCO/N7EmracO+8x7oLNlMCmSV0u3z25Xkjq/HGRVsXMAD0JCVcgHAwBEIWItKJV3xCViX21wCyzC6yu17xWR6bbvaqpYb/tpc22i8VglmQTqcbZOIixWDwyndQLXtFDhMlY/loEk/zBkE6ts21nKiW5IqwDiPB9tihVIM1w7cgBO6YcSDUzaN0tTPciR1uHdn7pGFv4jd4ACCW6ZqkujMaHcCkKZ7sDl7gh1MB8ERDTNZb0Rjmk7USnRWyVAQhcgfBAuilmwED585sHhZIgxLSCQhFV9Eai5g069bjQw0rwMJB3+yOsQLOPu8on6qPhYhud35BJF21FcxSak/RqxCFV1Y5VY=
 before_install:
-  - curl -fsSL https://get.docker.com | sh
-  - echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
-  - mkdir -p $HOME/.docker
-  - echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
-  - sudo service docker start
+- curl -fsSL https://get.docker.com | sh
+- echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
+- mkdir -p $HOME/.docker
+- echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
+- sudo service docker start
 install:
-  - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-  - docker buildx create --name xbuilder --use
+- docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+- docker buildx create --name xbuilder --use
 script: bash ci.sh
